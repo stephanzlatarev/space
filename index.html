@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Космическа станция</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.2/chart.min.js" crossorigin="anonymous"></script>
     <style>
 body, html {
   width: 100%;
@@ -28,7 +29,7 @@ body, html {
   width: calc(50% - 2.5rem);
   height: calc(33% - 2.5rem);
   background: white;
-  opacity: 0.5;
+  opacity: 0.75;
   border-radius: 0.6rem;
   padding: 0.5rem;
 }
@@ -60,11 +61,64 @@ body, html {
         </ul>
       </div>
     </div>
+
     <div class="panel day">
       <div class="heading">Температура - Денонощен цикъл</div>
+
+      <canvas id="day" width="850" height="10"></canvas>
+<script>
+var panel = document.getElementById('day');
+panel.width = ((window.innerWidth / 2) - 60);
+panel.height = ((window.innerHeight / 3) - 60);
+new Chart(panel, {
+  type: 'line',
+  data: {
+    labels: [ '00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00', '24:00' ],
+    datasets: [{
+      label: 'Градуси (Целзий)',
+      data: [ 18, 18.5, 19, 20, 21.5, 22, 21, 19, 18 ],
+      backgroundColor: 'rgba(100, 149, 237)',
+      borderColor: 'rgba(100, 149, 237)',
+    }],
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: { min: 10, max: 30 },
+    }
+  }
+});
+</script>
     </div>
+ 
     <div class="panel year">
       <div class="heading">Температура - Промяна за 1 година</div>
+
+      <canvas id="year" width="850" height="10"></canvas>
+<script>
+var panel = document.getElementById('year');
+panel.width = ((window.innerWidth / 2) - 60);
+panel.height = ((window.innerHeight / 3) - 60);
+new Chart(panel, {
+  type: 'line',
+  data: {
+    labels: [ 'Яну', 'Фев', 'Мар', 'Апр', 'Май', 'Юни', 'Юли', 'Авг', 'Сеп', 'Окт', 'Ное', 'Дек' ],
+    datasets: [{
+      label: 'Градуси (Целзий)',
+      data: [ 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21 ],
+      backgroundColor: 'rgba(100, 149, 237)',
+      borderColor: 'rgba(100, 149, 237)',
+    }],
+  },
+  options: {
+    responsive: true,
+    scales: {
+      y: { min: 10, max: 30 },
+    }
+  }
+});
+</script>
     </div>
+
   </body>
 </html>
