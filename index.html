@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Космическа станция</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.0.2/chart.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+    <script src="data.js"></script>
+    <script src="charts.js" defer></script>
     <style>
 body, html {
   width: 100%;
@@ -49,6 +52,12 @@ body, html {
   font-size: 1rem;
   font-weight: bold;
 }
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 90%;
+  width: 96%;
+}
     </style>
   </head>
   <body>
@@ -56,68 +65,24 @@ body, html {
     <div class="panel">
       <div class="heading">Показатели</div>
       <div class="indicators">
-        <ul>
-          <li>Температура</li>
-        </ul>
+        <ul id="indicators"></ul>
       </div>
     </div>
 
     <div class="panel day">
-      <div class="heading">Температура - Денонощен цикъл</div>
+      <div id="day-heading" class="heading"></div>
 
-      <canvas id="day" width="850" height="10"></canvas>
-<script>
-var panel = document.getElementById('day');
-panel.width = ((window.innerWidth / 2) - 60);
-panel.height = ((window.innerHeight / 3) - 60);
-new Chart(panel, {
-  type: 'line',
-  data: {
-    labels: [ '00:00', '03:00', '06:00', '09:00', '12:00', '15:00', '18:00', '21:00', '24:00' ],
-    datasets: [{
-      label: 'Градуси (Целзий)',
-      data: [ 18, 18.5, 19, 20, 21.5, 22, 21, 19, 18 ],
-      backgroundColor: 'rgba(100, 149, 237)',
-      borderColor: 'rgba(100, 149, 237)',
-    }],
-  },
-  options: {
-    responsive: true,
-    scales: {
-      y: { min: 10, max: 30 },
-    }
-  }
-});
-</script>
+      <div class="chart-container">
+        <canvas id="day-canvas"></canvas>
+      </div>
     </div>
  
     <div class="panel year">
-      <div class="heading">Температура - Промяна за 1 година</div>
+      <div id="year-heading" class="heading"></div>
 
-      <canvas id="year" width="850" height="10"></canvas>
-<script>
-var panel = document.getElementById('year');
-panel.width = ((window.innerWidth / 2) - 60);
-panel.height = ((window.innerHeight / 3) - 60);
-new Chart(panel, {
-  type: 'line',
-  data: {
-    labels: [ 'Яну', 'Фев', 'Мар', 'Апр', 'Май', 'Юни', 'Юли', 'Авг', 'Сеп', 'Окт', 'Ное', 'Дек' ],
-    datasets: [{
-      label: 'Градуси (Целзий)',
-      data: [ 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21, 21 ],
-      backgroundColor: 'rgba(100, 149, 237)',
-      borderColor: 'rgba(100, 149, 237)',
-    }],
-  },
-  options: {
-    responsive: true,
-    scales: {
-      y: { min: 10, max: 30 },
-    }
-  }
-});
-</script>
+			<div class="chart-container">
+			  <canvas id="year-canvas"></canvas>
+			</div>
     </div>
 
   </body>
