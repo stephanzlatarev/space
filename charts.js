@@ -40,8 +40,8 @@ let draw = function(label, heading, canvas, ticks, scale, data) {
         {
           label: data.unit,
           data: projections,
-          backgroundColor: 'rgba(100, 149, 237)',
-          borderColor: 'rgba(100, 149, 237)',
+          backgroundColor: 'rgba(100, 230, 100)',
+          borderColor: 'rgba(100, 230, 100)',
         },
         { showLine: false, pointRadius: 0, data: lowerline, fill: { value: data.limits.min }, backgroundColor: gradient, borderColor: 'rgba(0, 0, 255, 0.3)' },
         { showLine: false, pointRadius: 0, data: upperline, fill: { value: data.limits.max }, backgroundColor: gradient, borderColor: 'rgba(255, 0, 0, 0.3)' },
