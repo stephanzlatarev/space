@@ -22,7 +22,7 @@ const data = [
   },
 
   {
-    label: "Относителна влажност",
+    label: "Относителна влажност на въздуха",
     unit: "Проценти",
     projections: {
       daily: 40,
@@ -38,6 +38,27 @@ const data = [
       yearly: {
         lower: 20,
         upper: 80,
+      },
+    }
+  },
+
+  {
+    label: "Влажност на почвата",
+    unit: "pF",
+    projections: {
+      daily: 3.2,
+      yearly: 3.2,
+    },
+    limits: {
+      min: 2,
+      max: 4,
+      daily: {
+        lower: 3.0,
+        upper: 3.4,
+      },
+      yearly: {
+        lower: 3.0,
+        upper: 3.4,
       },
     }
   },
